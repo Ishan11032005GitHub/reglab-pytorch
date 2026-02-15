@@ -14,7 +14,7 @@ torch.manual_seed(42)
 np.random.seed(42)
 
 EPOCHS = 250
-HIDDEN_NEURONS = 256
+HIDDEN_NEURONS = 128
 KFOLDS = 5
 LR = 0.001
 
@@ -93,6 +93,12 @@ for depth in range(1, 5):
     epoch_val_acc /= KFOLDS
     epoch_train_loss /= KFOLDS
     epoch_val_loss /= KFOLDS
+
+    np.save(f"results/classification/train_acc_depth_{depth}.npy", epoch_train_acc)
+    np.save(f"results/classification/val_acc_depth_{depth}.npy", epoch_val_acc)
+    np.save(f"results/classification/train_loss_depth_{depth}.npy", epoch_train_loss)
+    np.save(f"results/classification/val_loss_depth_{depth}.npy", epoch_val_loss)
+
 
     with torch.no_grad():
         Xtst = torch.tensor(X_test, dtype=torch.float32)
@@ -203,6 +209,10 @@ for depth in range(1, 5):
 
     epoch_train_mse /= KFOLDS
     epoch_val_mse /= KFOLDS
+
+    np.save(f"results/regression/train_mse_depth_{depth}.npy", epoch_train_mse)
+    np.save(f"results/regression/val_mse_depth_{depth}.npy", epoch_val_mse)
+
 
     with torch.no_grad():
         Xtst = torch.tensor(X_test, dtype=torch.float32)
