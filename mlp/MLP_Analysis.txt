@@ -1,0 +1,39 @@
+Analysis
+
+1. Introduction
+In this experiment, a Multi-Layer Perceptron (MLP) was implemented to study the effect of network depth and network width on model performance.
+Two tasks were considered:
+Classification using the Wine Quality (Red Wine) dataset
+Regression using the California Housing dataset
+The dataset was split into a 75:25 train-test ratio. Five-fold cross validation was applied on the training data. ReLU activation was used in hidden layers. Softmax via Cross Entropy loss was used for classification. Linear output with Mean Squared Error loss was used for regression. Feature standardization was applied. All models were trained for 250 epochs.
+Experiments were conducted for 64, 128, and 256 hidden neurons with depths ranging from 1 to 4.
+
+2. Classification Results Analysis
+Training accuracy increased rapidly with depth for all neuron configurations. For deeper models, training accuracy reached nearly 100 percent, while validation and test accuracy saturated, indicating overfitting.
+Increasing the number of neurons improved shallow models, but gains diminished beyond 128 neurons. Validation accuracy remained around 0.77 to 0.78 across configurations.
+
+Best classification performance:
+64 neurons at depth 4
+128 neurons at depth 2
+256 neurons at depth 3
+
+Classification Conclusion:
+Increasing model capacity improves classification performance only up to a point. Excessive depth and width lead to overfitting, while generalization performance saturates.
+
+3. Regression Results Analysis
+For regression, increasing depth reduced training and validation MSE up to depth 3. Depth 4 showed marginal gains or slight overfitting.
+Increasing the number of neurons significantly improved regression performance. R2 scores improved from 64 to 256 neurons, though gains reduced beyond 128 neurons.
+
+Best regression performance:
+64 neurons at depth 3
+128 neurons at depth 4
+256 neurons at depth 3
+
+Regression Conclusion:
+Regression benefits more from increased model capacity. Wider and deeper networks better capture nonlinear relationships.
+
+4. Overall Comparison
+Classification is more sensitive to overfitting and requires lower capacity. Regression benefits more from higher capacity. Optimal performance depends on balancing depth and width.
+
+5. Final Conclusion
+The experiments show that increasing depth and width improves performance up to a limit. Beyond this, gains saturate and overfitting appears. Selecting an appropriate architecture based on task complexity is crucial.
