@@ -18,7 +18,7 @@ KFOLDS = 5
 LR = 0.001
 LAMBDA = 1e-4   # 🔥 L2 REGULARIZATION STRENGTH
 
-BASE_DIR = "results/gd_l2"
+BASE_DIR = "mlp/results/gd_l2"
 
 os.makedirs(BASE_DIR, exist_ok=True)
 os.makedirs(os.path.join(BASE_DIR, "classification"), exist_ok=True)
@@ -63,7 +63,7 @@ def l2_penalty(model):
 # =========================
 print("\nCLASSIFICATION (GD + L2)")
 
-wine = pd.read_csv("winequality-red.csv", sep=";")
+wine = pd.read_csv("mlp/winequality-red.csv", sep=";")
 wine["quality"] = (wine["quality"] >= 6).astype(int)
 
 X = wine.drop("quality", axis=1).values
@@ -154,7 +154,7 @@ cls_df.to_csv(os.path.join(BASE_DIR, "classification", "classification_results.c
 # =========================
 print("\nREGRESSION (GD + L2)")
 
-house = pd.read_csv("housing.csv")
+house = pd.read_csv("mlp/housing.csv")
 house = pd.get_dummies(house, columns=["ocean_proximity"], drop_first=True)
 
 X = house.drop("median_house_value", axis=1).values
